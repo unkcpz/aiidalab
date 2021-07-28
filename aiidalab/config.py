@@ -46,8 +46,8 @@ def _get_config_value(key, default=None):
     return getenv(_as_env_var_name(key), _CONFIG.get(key, default))
 
 
-AIIDALAB_HOME = _get_config_value("home", "/project")
-AIIDALAB_APPS = _get_config_value("apps", "/project/apps")
+AIIDALAB_HOME = _get_config_value("home", str(Path.home()))
+AIIDALAB_APPS = _get_config_value("apps", str(Path.home().joinpath("apps")))
 AIIDALAB_SCRIPTS = _get_config_value("scripts", "/opt")
 AIIDALAB_REGISTRY = _get_config_value(
     "registry", "https://aiidalab.github.io/aiidalab-registry/api/v1"
